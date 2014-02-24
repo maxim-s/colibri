@@ -1,0 +1,5 @@
+src/server/node_modules/
+src/client/.*
+src/client/bower_components
+src/client/node_modules/
+src/**/*.log
