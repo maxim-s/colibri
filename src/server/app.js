@@ -6,10 +6,10 @@
 var restify = require("restify")
   , mongoose = require('mongoose')
   , config = require('./config/config')
-  , routes = require('./config/routes')
   , fs = require('fs');
 
 // Paths
+var routes_path = config.root + '/config/routes'
 var models_path = config.root + '/models'
 var config_path = config.root + '/config'
 
@@ -52,7 +52,13 @@ var app = restify.createServer({
   version: config.version
 });
 
-routes(app, config);
+
+// Bootstrap routes
+fs.readdirSync(routes_path).forEach(function (file) {
+  console.log("Loading routes " + file);
+  require(routes_path+'/'+file)(app, config);
+});
+
 
 
 app.on('error', function(err) {

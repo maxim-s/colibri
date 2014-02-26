@@ -10,7 +10,8 @@
 	"dependencies": {
       "restify": "latest"
     , "mongoose": "latest"
-    , "mongo": "latest"   
+    , "mongo": "latest"
+    , "jasmine-node": "latest"   
   }
 }
 
