@@ -12,7 +12,7 @@ var mongoose = require('mongoose')
 var QuestionSchema = new Schema({
   id: ObjectId
   , title: { type: String, trim: true, required: true }
-  , author: { type: ObjectId, required: true }
+  , author: { type: String, required: true }
   , body: { type: String, trim: true, required: true  }
   
 })
@@ -20,6 +20,8 @@ var QuestionSchema = new Schema({
 
 
 mongoose.model('Question', QuestionSchema)
+
+module.exports = mongoose.model('Question');
 
 
 
