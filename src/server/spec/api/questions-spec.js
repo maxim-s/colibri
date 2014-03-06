@@ -34,6 +34,13 @@ describe('Routes for questions', function() {
 		});
 		
 	})
+	
+	it('Server should respond to /questions/:id (GET)', function(done){
+		_client.get('/questions/1', function(err, req, res, obj){
+			expect(res.statusCode).toBe(200);
+			done();
+		});
+	})
 
 	it('Server should respond to /questions/:id (POST)', function(done){
 		_client.post('/questions/1', function(err, req, res, obj){

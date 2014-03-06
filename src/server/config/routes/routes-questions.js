@@ -1,21 +1,18 @@
+var QuestionController = require("../../controllers/QuestionController")
+	, mongoose = require('mongoose')
+	, questionsCollection = mongoose.model('Question');
+
+
 module.exports = function(app, config){
-	app.get('questions', function(req, res){
-		res.send({});
-    });
+	var questionController = new QuestionController(questionsCollection);
 
-	app.get('questions/:id', function(req, res){
-		res.send({});
-    });
+	app.get('questions', questionController.list.bind(questionController));
 
-    app.post('questions/:id', function(req, res){
-		res.send({'message': 'Success'});
-    });
+	app.get('questions/:id', questionController.get);
 
-    app.put('questions', function(req, res){
-		res.send({'message': 'Success'});
-    });
+    app.post('questions/:id', questionController.update);
 
-    app.del('questions/:id', function(req, res){
-		res.send({'message': 'Success'});
-    });
+    app.put('questions', questionController.create);
+
+    app.del('questions/:id',questionController.remove);
 } 
