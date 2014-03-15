@@ -13,6 +13,8 @@ module.exports = function(config) {
     files: [
       {pattern: 'app/bower_components/angular/angular.js', included: false },
       {pattern: 'app/bower_components/angular-mocks/angular-mocks.js', included: false },
+      {pattern: 'app/bower_components/angular-resource/angular-resource.js', included: false },
+      {pattern: 'app/bower_components/angular-route/angular-route.js', included: false },
       {pattern: 'app/scripts/*.js', included: false },
       {pattern: 'app/scripts/**/*.js', included: false },
       {pattern: 'test/spec/**/*.js', included: false },

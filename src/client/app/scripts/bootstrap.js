@@ -2,11 +2,15 @@
 require.config({
   paths: {
     angular: '../../bower_components/angular/angular',
+    angularRoute: '../../bower_components/angular-route/angular-route',
+    angularResource: '../../bower_components/angular-resource/angular-resource',
     angularMocks: '../../bower_components/angular-mocks/angular-mocks',
     text: '../../bower_components/requirejs-text/text'
   },
   shim: {
     'angular' : {'exports' : 'angular'},
+    'angularRoute': ['angular'],
+    'angularResource': ['angular'],
     'angularMocks': {
       deps:['angular'],
       'exports':'angular.mock'
@@ -22,8 +26,10 @@ window.name = 'NG_DEFER_BOOTSTRAP!';
 
 require([
   'angular',
-  'app'
-], function(angular, app) {
+  'app',
+  'angularRoute',
+  'angularResource'
+], function(angular, app, ngRoutes, ngResource) {
   'use strict';
   /* jshint ignore:start */
   var $html = angular.element(document.getElementsByTagName('html')[0]);

@@ -1,4 +1,4 @@
-// Generated on 2014-02-18 using generator-angular-require 0.1.10
+// Generated on 2014-03-06 using generator-angular-require 0.1.10
 'use strict';
 
 // # Globbing
@@ -327,11 +327,15 @@ module.exports = function (grunt) {
           baseUrl: '<%= yeoman.app %>/scripts',
           paths: {
             angular: '../bower_components/angular/angular',
+            angularRoute: '../bower_components/angular-route/angular-route',
+            angularResource: '../bower_components/angular-resource/angular-resource',
             angularMocks: '../bower_components/angular-mocks/angular-mocks',
             text: '../bower_components/requirejs-text/text'
           },
           shim: {
             'angular' : {'exports' : 'angular'},
+            'angularRoute': ['angular'],
+            'angularResource': ['angular'],
             'angularMocks': {
               deps:['angular'],
               'exports':'angular.mock'
