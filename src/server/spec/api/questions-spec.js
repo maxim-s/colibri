@@ -69,7 +69,7 @@ describe('Routes for questions', function() {
 		});
 	})
 
-    xit('Server should respond 404 on not existed question /question/:id (DEL)', function(done){
+    it('Server should respond 404 on not existed question /question/:id (DEL)', function(done){
         _client.del('/questions/1', function(err, req, res, obj){
             expect(res.statusCode).toBe(404);
             done();
@@ -92,4 +92,6 @@ describe('Routes for questions', function() {
             });
         })
     })
+	
+	
 });

@@ -38,7 +38,17 @@ QuestionController.prototype.create = function(req,res){
     });
 }
 QuestionController.prototype.remove = function(req,res){
-
-    res.send(200);
+	var id=  req.params.id;
+	 Question.findById(id, function(err, data){
+		if (err){
+			 res.send(404, err);
+		}
+		Question.remove({ _id: data._id }, function (err) {
+			if (err) {console.log(err)};
+		});
+		
+		res.send(200);		
+	});
+	
 }
 
