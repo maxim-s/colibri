@@ -2,18 +2,18 @@
 define(['angular', 'angularMocks', 'app'], function(angular, mocks, app) {
   'use strict';
 
-  describe('Controller: MainCtrl', function () {
+  describe('Controller: QuestionsCtrl', function () {
 
     // load the controller's module
-    beforeEach(module('colibriApp.controllers.MainCtrl'));
+    beforeEach(module('colibriApp.controllers.QuestionsCtrl'));
 
-    var MainCtrl,
+    var QuestionsCtrl,
       scope;
 
     // Initialize the controller and a mock scope
     beforeEach(inject(function ($controller, $rootScope) {
       scope = $rootScope.$new();
-      MainCtrl = $controller('MainCtrl', {
+      QuestionsCtrl = $controller('QuestionsCtrl', {
         $scope: scope
       });
     }));
