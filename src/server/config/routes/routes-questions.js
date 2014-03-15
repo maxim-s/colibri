@@ -1,12 +1,10 @@
-var QuestionController = require("../../controllers/QuestionController")
-	, mongoose = require('mongoose')
-	, questionsCollection = mongoose.model('Question');
+var QuestionController = require("../../controllers/QuestionController");
 
 
 module.exports = function(app, config){
-	var questionController = new QuestionController(questionsCollection);
+	var questionController = new QuestionController();
 
-	app.get('questions', questionController.list.bind(questionController));
+	app.get('questions', questionController.list);
 
 	app.get('questions/:id', questionController.get);
 

@@ -11,13 +11,17 @@ var QuestionController = module.exports = function (questionsCollection) {
 }
 
 QuestionController.prototype.list = function(req,res){
-	this.questionsCollection.count({}, function(err, count) { 
-		console.log(count);
-	});
 	res.send({});
 }
 QuestionController.prototype.get = function(req,res){
-	res.send({});
+	var id =  req.params.id;
+	 Question.findById(id, function(err, data){
+		console.log(err);
+		if (err){
+			 res.send(404, err);
+		}		
+		res.send(200, data);		
+	});
 }
 QuestionController.prototype.update = function(req,res){
 	res.send({});
