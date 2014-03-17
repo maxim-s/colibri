@@ -42,12 +42,44 @@ describe('Routes for questions', function() {
 	})
 	
 
-	it('Server should respond to /questions/:id (POST)', function(done){
-		_client.post('/questions/1', function(err, req, res, obj){
-			expect(res.statusCode).toBe(200);
+	it('Server should respond 404 on not existed question /question (POST)', function(done){	
+	
+		_client.post('/question', question, function(err, req, res, obj){
+			expect(res.statusCode).toBe(404);
 			done();
 		});
-	})
+	});
+	
+	it('Server should return created question /questions (POST)', function(done){
+		 _client.post('/questions', question, function(err, req, res, obj){
+             var postQuestion = JSON.parse(res.body);
+             _client.get('/questions/' + postQuestion._id, function(err, req, res, obj){
+                 var getQuestion = JSON.parse(res.body);
+                 expect(getQuestion._id).toBe(postQuestion._id);
+                 done();
+             });
+
+		});
+	});
+
+
+    it('Server should return update question /questions (POST)', function(done){
+        _client.post('/questions', question, function(err, req, res, obj){
+            var questionForUpdate = JSON.parse(res.body);
+            questionForUpdate.title = 'This is new test title';
+
+            _client.post('/questions', questionForUpdate, function(err, req, res, obj){
+
+                _client.get('/questions/' + questionForUpdate._id, function(err, req, res, obj){
+                    var getQuestion = JSON.parse(res.body);
+                    console.log("get question" ,getQuestion);
+                    expect('This is new test title').toBe(getQuestion.title);
+                    done();
+                });
+            });
+
+        });
+    });
 
 	it('Server should create question /questions (PUT)', function(done){
         _client.put('/questions', question, function(err, req, res, obj){

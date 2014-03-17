@@ -8,7 +8,7 @@ module.exports = function(app, config){
 
 	app.get('questions/:id', questionController.get);
 
-    app.post('questions/:id', questionController.update);
+    app.post('questions', questionController.save);
 
     app.put('questions', questionController.create);
 
