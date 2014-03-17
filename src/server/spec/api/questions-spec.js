@@ -40,6 +40,18 @@ describe('Routes for questions', function() {
 			done();
 		});
 	})
+
+    it('Server should return at least 2 questions /questions', function(done){
+        _client.post('/questions', question, function(err, req, res, obj){
+            _client.post('/questions', question, function(err, req, res, obj){
+                _client.get('/questions', function(err, req, res, obj){
+                    var getQuestion = JSON.parse(res.body);
+                    expect(getQuestion.length).toBeGreaterThan(2);
+                    done();
+                });
+            });
+        });
+    })
 	
 
 	it('Server should respond 404 on not existed question /question (POST)', function(done){	
@@ -72,7 +84,6 @@ describe('Routes for questions', function() {
 
                 _client.get('/questions/' + questionForUpdate._id, function(err, req, res, obj){
                     var getQuestion = JSON.parse(res.body);
-                    console.log("get question" ,getQuestion);
                     expect('This is new test title').toBe(getQuestion.title);
                     done();
                 });

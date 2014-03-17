@@ -11,7 +11,12 @@ var QuestionController = module.exports = function (questionsCollection) {
 }
 
 QuestionController.prototype.list = function(req,res){
-	res.send({});
+    Question.find({}, function(err,data){
+        if (err){
+            res.send(500, err);
+        }
+        res.send(200, data);
+    });
 }
 QuestionController.prototype.get = function(req,res){
 	var id =  req.params.id;
@@ -59,8 +64,6 @@ QuestionController.prototype.save = function(req,res){
             });
         }
 	});
-	
-		console.log(body);
 }
 QuestionController.prototype.create = function(req,res){
     var body = '';
