@@ -1,0 +1,16 @@
+<a href="#/Questions">Questions list</a>
+
+<h1>{{ question.title }}</h1>
+<p>{{ question.author }}</p>
+<p>{{ question.body }}</p>
+<p>{{ question.date }}</p>
+
+<h2>Comments</h2>
+<p ng-repeat="comment in question.comments">
+    <strong>[{{comment.date}}] {{comment.text}}.</strong>
+</p>
+
+<h2>Answer</h2>
+<p ng-repeat="answer in question.answers">
+    <strong>[ {{answer.date}} ] {{answer.body}}.</strong>
+</p>

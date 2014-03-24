@@ -1,9 +1,8 @@
-var Question = require('../../models/Question.js');
+var Question = require('../../models/Question.js')
+               , db = require('../../db');
 
 describe('Db operations with questions', function() {
-	var mongoose = require('mongoose');
-	mongoose.connect('mongodb://localhost/test');
-
+    db.open('mongodb://localhost/test');
 
 	afterEach(function(){
 		// TODO: it doesn't work

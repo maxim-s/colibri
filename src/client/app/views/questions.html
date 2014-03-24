@@ -1,1 +1,11 @@
 <p>This is the questions view.</p>
+
+<div>
+    I have {{questions.length}} questions. They are:
+    <input type="search" ng-model="q" placeholder="filter..." />
+    <ul>
+        <li ng-repeat="question in questions | filter:q">
+            <a href="#/question-view/{{question._id}}">[ {{$index + 1}} ] {{question.title}}.</a>
+        </li>
+    </ul>
+</div>

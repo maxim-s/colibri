@@ -1,9 +1,10 @@
 /*jshint unused: vars */
-define(['angular', 'controllers/main', 'controllers/questions']/*deps*/, function (angular, MainCtrl, QuestionsCtrl)/*invoke*/ {
+define(['angular', 'controllers/main', 'controllers/questions', 'controllers/question-view']/*deps*/, function (angular, MainCtrl, QuestionsCtrl, QuestionViewCtrl)/*invoke*/ {
   'use strict';
 
   return angular.module('colibriApp', ['colibriApp.controllers.MainCtrl',
 'colibriApp.controllers.QuestionsCtrl',
+'colibriApp.controllers.QuestionViewCtrl',
 /*angJSDeps*/
   'ngResource',
   'ngRoute'
@@ -17,6 +18,10 @@ define(['angular', 'controllers/main', 'controllers/questions']/*deps*/, functio
         .when('/Questions', {
           templateUrl: 'views/questions.html',
           controller: 'QuestionsCtrl'
+        })
+        .when('/question-view/:id', {
+          templateUrl: 'views/question-view.html',
+          controller: 'QuestionViewCtrl'
         })
         .otherwise({
           redirectTo: '/'
