@@ -11,7 +11,10 @@
       "restify": "latest"
     , "mongoose": "latest"
     , "mongo": "latest"
-    , "jasmine-node": "latest"   
+    , "jasmine-node": "latest"
+    , "passport": "latest"
+    , "passport-google-oauth": "latest"
+    , "passport-local" : "latest"
   }
 }
 

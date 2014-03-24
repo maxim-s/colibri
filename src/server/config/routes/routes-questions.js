@@ -1,6 +1,5 @@
 var QuestionController = require("../../controllers/QuestionController");
 
-
 module.exports = function(app, config){
 	var questionController = new QuestionController();
 
@@ -12,5 +11,5 @@ module.exports = function(app, config){
 
     app.put('questions', questionController.create);
 
-    app.del('questions/:id',questionController.remove);
+    app.del('questions/:id', questionController.remove);
 } 

@@ -11,11 +11,13 @@ var restify = require("restify")
   , mongoose = require('mongoose')
   , config = require('./config/' + configName)
   , fs = require('fs')
-  , db = require('./db');
+  , db = require('./db')
+  , path = require('path');
 
 // Paths
 var routes_path = config.root + '/config/routes'
 var models_path = config.root + '/models'
+var auth_path = config.root + '/auth'
 
 db.open();
 
@@ -38,6 +40,12 @@ var enableCORS = function(req, res, next) {
 fs.readdirSync(models_path).forEach(function (file) {
   console.log("Loading model " + file);
   require(models_path+'/'+file);
+});
+
+// Bootstrap auth stategies
+fs.readdirSync(auth_path).forEach(function (file) {
+  console.log("Loading auth stategies " + path.join(auth_path, file));
+  require(path.join(auth_path, file)).register();
 });
 
 
