@@ -2,10 +2,14 @@
 * Main application server setup
 */
 
+// Args
+var args = process.argv;
+var configName = args[2] || 'config';
+
 // Modules
 var restify = require("restify")
   , mongoose = require('mongoose')
-  , config = require('./config/config')
+  , config = require('./config/' + configName)
   , fs = require('fs')
   , db = require('./db');
 
