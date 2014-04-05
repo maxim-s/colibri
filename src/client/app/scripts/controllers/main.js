@@ -2,11 +2,7 @@ define(['angular'], function (angular) {
   'use strict';
 
   angular.module('colibriApp.controllers.MainCtrl', [])
-    .controller('MainCtrl', function ($scope) {
-      $scope.awesomeThings = [
-        'HTML5 Boilerplate',
-        'AngularJS',
-        'Karma'
-      ];
+    .controller('MainCtrl', function ($scope, $url) {
+      $scope.authUrl = $url.getAuthUrl();
     });
 });
