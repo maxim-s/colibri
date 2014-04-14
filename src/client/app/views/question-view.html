@@ -1,16 +1,79 @@
-<a href="#/Questions">Questions list</a>
+<div class="hero-unit">
+	<h3>{{ question.title }}</h3>
+</div>
 
-<h1>{{ question.title }}</h1>
-<p>{{ question.author }}</p>
-<p>{{ question.body }}</p>
-<p>{{ question.date }}</p>
+<div>
+	<p class="question-body">{{ question.body }}</p>
+	<p class="question-signature">{{ question.author }} {{ question.date | date:'yyyy-MM-dd'}}</p>
+</div>
 
-<h2>Comments</h2>
-<p ng-repeat="comment in question.comments">
-    <strong>[{{comment.date}}] {{comment.text}}.</strong>
-</p>
+<div>
+	<hr ng-if="(question.comments).length > 0">
+	<div class="question-comment">
+		<div ng-repeat="comment in question.comments">
+			<span class="question-comment-body">{{comment.text}}</span>
+			<span class="question-comment-signature">&#x2012 {{comment.author}} {{ comment.date | date:'yyyy-MM-dd'}}</span>
+			<hr>
+		</div>
 
-<h2>Answer</h2>
-<p ng-repeat="answer in question.answers">
-    <strong>[ {{answer.date}} ] {{answer.body}}.</strong>
-</p>
+
+		<div class="input-append comment-input-group">
+			<input class="comment-input-text" type="text" maxlength="160" placeholder="Коментарий не более 160 символов..." ng-model="questionCommentInput"/>
+			<button class="btn comment-input-button" ng-click="addQuestionComment(questionCommentInput)">Добавить коментарий</button>
+		</div>
+	</div>
+</div>
+
+<div>
+	</br>
+	</br>
+	<h2>Ответов: {{(question.answers).length}}</h2>
+	<hr>
+<div>
+
+<div ng-repeat="answer in question.answers">
+	<table
+		<tbody>
+			<tr>
+				<td align="center" class="rating-cell">
+					<div class"rating">                       
+						<a ng-click="ratingClick(answer, 1)"><img src="../images/rating-up-off.png" class="rating-arrow"></img></a>
+						<span class="rating-counter strong">{{answer.rating}}</span>
+						<a ng-click="ratingClick(answer, -1)"><img src="../images/rating-down-off.png" class="rating-arrow"></img></a>
+					</div>
+				</td>
+
+				<td class="answer-cell">
+					<div>
+						<p class="answer-body">{{answer.body}}</p>
+						<p class="answer-signature">{{answer.author}} {{ answer.date | date:'yyyy-MM-dd'}}</p>
+
+					</div>
+	
+					<div>
+						<hr ng-if="(answer.comments).length > 0">
+						<div ng-repeat="comment in answer.comments">
+							<span class="answer-comment-body">{{comment.text}}</span>
+							<span class="answer-comment-signature">&#x2012 {{comment.author}} {{ comment.date | date:'yyyy-MM-dd'}}</span>
+							<hr>
+						</div>
+
+
+						<div class="input-append comment-input-group">
+							<input class="comment-input-text" type="text" maxlength="160" placeholder="Коментарий не более 160 символов..." ng-model="answerCommentInput"/>
+							<button class="btn comment-input-button" ng-click="addAnswerComment(answer, answerCommentInput)">Добавить коментарий</button>
+						</div>
+
+					</div>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<hr>
+</div>
+
+<form>
+	<h2>Ваш ответ</h2>
+	<textarea class="answer-input" ng-model="answerInput"></textarea>
+	<button class="btn" ng-click="sendAnswer(answerInput)" >Отправить</button>
+</form>
