@@ -51,14 +51,18 @@
             <li><a href="#/Questions" class="nav-element">Вопросы</a></li>
           </ul>
 
-          <form class="navbar-form navbar pull-right" role="search">
-            <div class="form-group">
-              <input type="text" class="form-control" placeholder="Поиск...">
-              <button class="btn btn-default">Найти</button>
-            </div>
-          </form>
+	  <div class="col-sm-4 col-md-4 pull-right">
+	    <form class="navbar-form" role="search" method="get" id="search-form" name="search-form">
+	      <div class="input-group">
+		<input type="text" class="form-control" placeholder="Поиск..." id="search" name="search" value="">
+		<div class="input-group-btn">
+		  <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span></button>
+		</div>
+	      </div>
+	    </form>
+	  </div>
 
-        </div>
+	</div>
       </div>
     </nav>
 
